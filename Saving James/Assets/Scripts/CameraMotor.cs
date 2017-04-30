@@ -2,7 +2,9 @@
 using System.Collections;
 
 public class CameraMotor : MonoBehaviour {
-	private Transform lookAt;
+    public float minY = 3;
+    public float maxY = 5;
+    private Transform lookAt;
 	private Vector3 startOffset;
 	private Vector3 moveVector;
 	private float transition = 0.5f;
@@ -23,7 +25,7 @@ public class CameraMotor : MonoBehaviour {
 		moveVector.x = 0;
 
 		//Y
-		moveVector.y = Mathf.Clamp (moveVector.y,3,5);
+		moveVector.y = Mathf.Clamp (moveVector.y,minY,maxY);
 
 		if (transition > 1.0f) 
 		{
