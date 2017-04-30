@@ -3,11 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 public class TileManager : MonoBehaviour {
 	public GameObject[] tilePrefabs;
+	public float tileLength;
+	public int amnTilesOnScreen;
+	public float spawnDistanceFromPlayer;
+
 	//Variables
+	private float spawnZ = 0;
 	private Transform playerTransform;
-	private float spawnZ = -3.0f;
-	private float tileLength = 3.0f;
-	private int amnTilesOnScreen = 20;
 	private int lastPrefabIndex = 0;
 	
 	private List<GameObject> activeTiles; 
@@ -29,7 +31,7 @@ public class TileManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	private void Update () {
-		if (playerTransform.position.z - 7> (spawnZ - amnTilesOnScreen * tileLength)) {
+		if (playerTransform.position.z > spawnZ - (amnTilesOnScreen - 1) * tileLength) {
 			SpawnTile ();
 			DeleteTile();
 		}
