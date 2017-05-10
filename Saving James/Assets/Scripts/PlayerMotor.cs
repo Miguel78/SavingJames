@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class PlayerMotor : MonoBehaviour 
 {
@@ -51,4 +52,17 @@ public class PlayerMotor : MonoBehaviour
 		speed = 5.0f + modifier;
 	}
 
+	// Morir si toca un killer
+	void OnControllerColliderHit(ControllerColliderHit hit) {
+		if (hit.collider.CompareTag ("Killer")) {
+			Time.timeScale = 0.2f;
+			Invoke ("Die", 0.5f);
+		}
+
+	}
+
+	public void Die(){
+		Time.timeScale = 1f;
+		SceneManager.LoadScene (0);
+	}
 }
