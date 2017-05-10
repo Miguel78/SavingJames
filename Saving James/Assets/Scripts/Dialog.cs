@@ -24,8 +24,8 @@ public class Dialog : MonoBehaviour {
 		textComponent.text = dialogText;
 		panel.SetActive (true);
 
-		// Ocultar el dialogo dentro de 2 segundos
-		Invoke ("Hide", 2f);
+		// Ocultar el dialogo dentro de 5 segundos
+		Invoke ("Hide", 5f);
 	}
 
 	// Ocultar el dialogo
